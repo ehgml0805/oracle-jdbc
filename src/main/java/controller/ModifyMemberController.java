@@ -20,7 +20,6 @@ public class ModifyMemberController extends HttpServlet {
 		//로그인 되어 있으면 여기 접근 금지
 		//로그인 전에만 접근 가능 ==null 이어야 접근 가능
 		HttpSession session= request.getSession();
-		
 		//로그인 전이면 null 
 		//로그인 후면  로그인 한 값
 		Member loginMember= (Member)session.getAttribute("loginMember");
@@ -28,7 +27,6 @@ public class ModifyMemberController extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/home"); //이동할 컨드롤러 URL
 			return;
 		}
-
 		//수정하기 폼 view
 		request.getRequestDispatcher("/WEB-INF/view/member/modifyMember.jsp").forward(request, response); //합칠 파일 이름명
 	}
@@ -45,7 +43,6 @@ public class ModifyMemberController extends HttpServlet {
 			return;
 		}
 		request.setCharacterEncoding("utf-8");
-		
 		//폼에서 받아오기
 		String memberName= request.getParameter("memberName");
 		System.out.println(memberName+"수정 할 이름");
@@ -54,7 +51,7 @@ public class ModifyMemberController extends HttpServlet {
 		String memberPw= request.getParameter("memberPw");
 		System.out.println(memberPw+"비밀번호");
 		
-		Member paramMember= loginMember;
+		Member paramMember= new Member();
 		paramMember.setMemberId(memberId);
 		paramMember.setMemberPw(memberPw);
 		paramMember.setMemberName(memberName);
@@ -63,22 +60,25 @@ public class ModifyMemberController extends HttpServlet {
 		if(memberService.memberPwCh(memberPw)==true) {
 			System.out.println("비밀번호 일치");
 			
-		}else {
+		}else if(memberService.memberPwCh(memberPw)==false){
 			System.out.println("비밀번호 불일치(컨트롤러)");
-			response.sendRedirect(request.getContextPath()+"/member/modifyMember");
+			//서블릿에서 알림창 띄우기
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('비밀번호가 다릅니다!'); location.href='"+request.getContextPath()+"/member/memberOne"+"';</script>"); 
+			writer.close();
 			return;
 		}
 		
-		Member resultMember = memberService.modifyMember(paramMember);
-		System.out.println(resultMember+"<==resultMember(컨트롤러)");
-		
-		
-		System.out.println("수정 성공");
-		response.sendRedirect(request.getContextPath()+"/member/memberOne");
-		return;
-
+		int row = memberService.modifyMember(paramMember, memberName);
+		System.out.println(row+"<==row(컨트롤러)");
+		if(row==1) {
+			System.out.println("수정 성공");
+			session.setAttribute("loginMember", paramMember); // 안쓰니까 memberOne으로 돌아갔을때 바뀐 이름이 안나옴..
+			response.sendRedirect(request.getContextPath()+"/member/memberOne");
+			return;
+		}
 	}
-		
 }
 
 

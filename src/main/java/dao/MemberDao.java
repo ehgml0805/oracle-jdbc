@@ -13,6 +13,7 @@ public class MemberDao {
 		String sql="DELETE FROM member WHERE member_id=?";
 		PreparedStatement stmt= conn.prepareStatement(sql);
 		stmt.setString(1, memberId);
+		System.out.println(memberId+"<==memberId");
 		row=stmt.executeUpdate();
 		if(row==1) {
 			System.out.println("삭제 성공");
@@ -22,33 +23,32 @@ public class MemberDao {
 		return row;
 	}	
 	
-	//modifyMember
-	public Member modifyMember(Connection conn, Member paramMember) throws Exception {
-		Member resultMember=null;
+	//modifyMember 음? String memberName 이거 추가하니까 되네?...왜?
+	public int modifyMember(Connection conn, Member paramMember, String memberName) throws Exception {
+		int row=0;
 		String sql="UPDATE member SET member_name= ? , updatedate=sysdate WHERE member_id=?";
 		PreparedStatement stmt= conn.prepareStatement(sql);
-		stmt.setString(1, paramMember.getMemberName());
+		stmt.setString(1, memberName);
 		stmt.setString(2, paramMember.getMemberId());
-		resultMember = new Member();
 		System.out.println(paramMember+"<==resultMember");
-		int row=stmt.executeUpdate();
+		row=stmt.executeUpdate();
 		if(row==1) {
 			System.out.println("수정 성공");
-			resultMember=paramMember;
+			return 1;
 		}
 		stmt.close();
-		return resultMember;
+		return row;
 	}
 	//memberPwCh
 	public boolean memberPwCh(Connection conn, String memberPw) throws Exception{
 		boolean result=false; // 
-		String sql="SELECT member_pw memberPw FROM member WHERE member_pw=?";
+		String sql="SELECT member_id memberId, member_pw memberPw FROM member WHERE member_pw=?";
 		PreparedStatement stmt=conn.prepareStatement(sql);
 		stmt.setString(1, memberPw);
 		ResultSet rs=stmt.executeQuery();
 		if(rs.next()){
 			System.out.println("비밀번호 일치:DAO");
-			result= true;
+			return true; // 빼먹으니 false 뜸..
 		}
 		return result;
 	}

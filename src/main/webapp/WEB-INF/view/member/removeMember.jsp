@@ -11,11 +11,11 @@
 		<table>
 			<tr>
 				<td>ID</td>
-				<td><input type="text" name="memberId" value=" ${loginMember.memberId}" readonly="readonly"></td>
+				<td><input type="text" name="memberId" value="${loginMember.memberId}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td>Name</td>
-				<td><input type="text" name="memberName" id="memberName" value=" ${loginMember.memberName}" readonly="readonly"></td>
+				<td><input type="text" name="memberName" id="memberName" value="${loginMember.memberName}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td>Password</td>

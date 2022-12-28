@@ -46,7 +46,7 @@ public class addMemberController extends HttpServlet {
 		//id 중복검사
 		this.memberService=new MemberService();
 		memberService.selectMemberID(memberId);
-		if(memberService.selectMemberID(memberId)) {
+		if(memberService.selectMemberID(memberId)==true) {
 			//System.out.println("중복된 아이디 입니다(컨트롤러)");
 			//서블릿에서 알림창 띄우기
 			response.setContentType("text/html; charset=UTF-8");

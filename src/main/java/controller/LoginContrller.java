@@ -34,10 +34,6 @@ public class LoginContrller extends HttpServlet {
 	
 	//로그인 액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * 로그인 세션 정보:session.setAttribute("loginMember",member타입)
-		 * 
-		 */
 		//로그인 전에만 접근 가능 ==null 이어야 접근 가능
 		HttpSession session= request.getSession();
 		//로그인 전이면 null 

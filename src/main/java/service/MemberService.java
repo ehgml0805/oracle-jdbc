@@ -11,43 +11,43 @@ public class MemberService {
 	private MemberDao memberDao;
 	
 	//removeMember
-		public int removeMember(String memberId) {
-			this.memberDao= new MemberDao();
-			Connection conn=null;
-			int row=0;
-			try {
-				conn=DBUtil.getConnection();
-				row=memberDao.removeMember(conn, memberId);
-				System.out.println(row+"<==row: 서비스");
-				conn.commit();
-				System.out.println("커밋");
-			}catch(Exception e) {
-				try {
-					conn.rollback();
-					System.out.println("롤백");
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-				e.printStackTrace();
-			}finally {
-				try {
-					conn.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
-			return row;
-		}
-	
-	//modifyMember
-	public Member modifyMember(Member paramMember) {
+	public int removeMember(String memberId) {
 		this.memberDao= new MemberDao();
 		Connection conn=null;
-		Member resultMember= new Member();
+		int row=0;
 		try {
 			conn=DBUtil.getConnection();
-			//resultMember=memberDao.modifyMember(conn, paramMember);
-			System.out.println(resultMember+"<==resultMember: 서비스");
+			row=memberDao.removeMember(conn, memberId);
+			System.out.println(row+"<==row: 서비스");
+			conn.commit();
+			System.out.println("커밋");
+		}catch(Exception e) {
+			try {
+				conn.rollback();
+				System.out.println("롤백");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return row;
+	}
+	
+	//modifyMember
+	public int modifyMember(Member paramMember,String memberName) {
+		this.memberDao= new MemberDao();
+		Connection conn=null;
+		int row=0;
+		try {
+			conn=DBUtil.getConnection();
+			row=memberDao.modifyMember(conn, paramMember, memberName);
+			System.out.println(row+"<==row: 서비스");
 			conn.commit();
 		}catch(Exception e) {
 			try {
@@ -64,7 +64,7 @@ public class MemberService {
 				e.printStackTrace();
 			}
 		}
-		return resultMember;
+		return row;
 	}
 	
 	//memberPwCh
@@ -75,6 +75,8 @@ public class MemberService {
 		try {
 			conn=DBUtil.getConnection();
 			result=memberDao.memberPwCh(conn, memberPw);
+			System.out.println(memberPw+"<==memberPw: 서비스");
+			System.out.println(result+"<==result: 서비스");
 			conn.commit();
 		}catch(Exception e) {
 			try {

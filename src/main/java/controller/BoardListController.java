@@ -28,11 +28,11 @@ public class BoardListController extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/home"); //이동할 컨드롤러 URL
 			return;
 		}
-		int currentPage=1;
+		int currentPage=1; //1페이지부터 시작
 		if(request.getParameter("currentPage")!=null) {
 			currentPage=Integer.parseInt(request.getParameter("currentPage"));
 		}
-		int rowPerPage=10;
+		int rowPerPage=10; //10개씩 출력할거
 		if(request.getParameter("rowPerPage")!=null) { // 안넘어오면 기본 값 10(개씩 볼거)
 			rowPerPage=Integer.parseInt(request.getParameter("rowPerPage"));
 		}

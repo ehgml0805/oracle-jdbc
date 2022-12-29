@@ -27,6 +27,7 @@
         <a class="nav-link" href="${pageContext.request.contextPath}/home">Home
           <span class="sr-only">(current)</span>
         </a>
+        
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/board/boardList">Board</a>
@@ -39,15 +40,12 @@
       </li>
     </ul>
   </div>
-  <div style="font-size: medium;">
-  <a style="color: white;" href="${pageContext.request.contextPath}/member/logout">로그아웃</a>
-  </div>
 </nav>
 <!-- 설명.. 포트 폴리오 이 프로젝트를 왜 하였는지? 주로 마리아디비를 사용하였지만 
 오라클 디비 사용해서 프로그램 하나 만들고 싶었음... 
 그리고 mvc 모델2로 바꾸는 작업도 해볼겸 두달정도 수업한거 정리할겸 간단하게 만드어보았음 -->
 	 <div class="jumbotron">
-  <h3 class="display-3"> ${loginMember.memberName}님, 반갑습니다.</h3>
+  <h3 class="display-3">Hello, ${loginMember.memberName}.</h3>
   <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>

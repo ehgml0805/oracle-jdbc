@@ -12,7 +12,6 @@
 	href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.3/dist/sketchy/bootstrap.css"
 	integrity="sha256-JJ4p3Dz8B2dC73R30IJXrwTeMvB8hi3VMOgHmWxMeZw="
 	crossorigin="anonymous">
-
 </head>
 <body>
 	<form action="${pageContext.request.contextPath}/member/addMember" method="post" id="signInForm">
@@ -24,21 +23,19 @@
 					<label for="exampleInputEmail1">NAME</label>
 					<input class="form-control" type="text" name="memberName" id="memberName" placeholder="Name">
 				</div>
-				
 				<div class="form-group">
 					<label for="exampleInputEmail1">ID</label>
 					<input class="form-control" type="text" name="memberId" id="memberId" placeholder="ID">
 				</div>
-
 				<div class="form-group">
 					<label for="exampleInputPassword1">PASSWORD</label>
 					<input class="form-control" type="password" name="memberPwCk" id="memberPwCk" placeholder="Password">
 				</div>
-				
 				<div class="form-group">
 					<label for="exampleInputEmail1">PASSWORD</label>
 					<input class="form-control" type="password" name="memberPw" id="memberPw" placeholder="Confirm Password">
 				</div>
+				
 			</div>
 			<hr class="my-4">
 		<button type="button" id="signinInBt" class="btn btn-outline-primary" >SIGN UP</button>
@@ -75,7 +72,6 @@
 		}
 		let signInForm=document.querySelector('#signInForm');
 		signInForm.submit();
-		
 	});
 </script>
 </body>

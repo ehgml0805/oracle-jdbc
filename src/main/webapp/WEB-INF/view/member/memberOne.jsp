@@ -41,29 +41,29 @@
 	</nav>
 	<h3 class="display-3">Hello, ${loginMember.memberName}.</h3>
 	<div class="card mb-3">
-		<h3 class="card-header">Card header</h3>
+		<h3 class="card-header">My Page</h3>
 		<div class="card-body">
-			<h5 class="card-title">Special title treatment</h5>
 			<h6 class="card-subtitle text-muted">이 프로젝트를 왜 하였는지?</h6>
 		</div>
 		<div class="card-body">
 			<p class="card-text">
-				학원에서 처음 디비 사용할때는 마리아디비를 이용함 <br> 배우는 입장에서는 마리아디비가 쉬워(?) 친절(?)
+			...작성예정
+				<!-- 학원에서 처음 디비 사용할때는 마리아디비를 이용함 <br> 배우는 입장에서는 마리아디비가 쉬워(?) 친절(?)
 				하지만 현직 나가면 오라클을 더 많이 사용한다고 함<br> 그래서 오라클 디비 사용해서 간단한 웹프로젝트를 하나
 				만들고 싶었음... 그리고 이전에는 서블릿을 사용하지 않고 mvc 모델1으로 CRUD를 하였다면 이제는 mvc 모델2로
-				바꾸는 작업도 해볼겸 두달정도 수업한거 정리할겸 간단하게 만드어보았음
+				바꾸는 작업도 해볼겸 두달정도 수업한거 정리할겸 간단하게 만드어보았음 (수정예정) -->
 			</p>
 		</div>
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item">
-				<a href="${pageContext.request.contextPath}/member/modifyMember" class="card-link">개인정보수정</a>
+				<a href="${pageContext.request.contextPath}/member/modifyMember" class="card-link">개인정보 수정하기</a>
 			</li>
 			<li class="list-group-item">
 				<a href="${pageContext.request.contextPath}/member/removeMember" class="card-link">회원탈퇴</a>
 			</li>
-			<li class="list-group-item">Vestibulum at eros</li>
 		</ul>
-		<div class="card-footer text-muted">2 days ago</div>
+		<!-- 아래 꺼 의미 없음,,,그냥 허전해보이길래,, -->
+		<div class="card-footer text-muted">2 days ago..</div>
 	</div>
 </body>
 </html>

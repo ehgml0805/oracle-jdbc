@@ -43,7 +43,7 @@
 	<form action="${pageContext.request.contextPath}/member/removeMember"
 		method="post" id="removeMember">
 		<div class="jumbotron" style="max-width: 28rem; margin: auto;">
-			<h3 class="display-3" style="text-align: center;">SIGN UP</h3>
+			<h3 class="display-3" style="text-align: center;">Delete Account</h3>
 			<div class="card-body">
 
 				<div class="form-group">

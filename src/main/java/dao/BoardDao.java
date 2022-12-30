@@ -29,10 +29,10 @@ public class BoardDao {
 	//boardList
 	public ArrayList<Board> selectBoardListByPage(Connection conn, int beginRow, int endRow) throws Exception {
 		ArrayList<Board> list = new ArrayList<Board>();
-		String sql = "SELECT board_no boardNo, board_title boardTitle, createdate"
+		String sql ="SELECT board_no boardNo, board_title boardTitle, createdate"
 				+ " FROM (SELECT rownum rnum, board_no, board_title, createdate"
 				+ "			FROM (SELECT board_no, board_title, createdate"
-				+ "					FROM board ORDER BY board_no DESC))"
+				+ "					FROM board ORDER BY  TO_NUMBER(board_no) DESC))" //TO_NUMBER 숫자로 형변환 해주기
 				+ " WHERE rnum BETWEEN ? AND ?"; // WHERE rnum >=? AND rnum <=?;
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);
